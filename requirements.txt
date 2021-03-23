@@ -1,0 +1,7 @@
+streamlit==0.79.0
+swachhdata==1.2.2
+pandas==1.1.5
+numpy==1.19.5
+tensorflow==2.4.1
+xlrd==1.2.0
+keras-vis==0.4.1
