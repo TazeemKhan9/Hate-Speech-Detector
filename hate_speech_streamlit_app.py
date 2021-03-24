@@ -87,10 +87,13 @@ def main():
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
       user_input = st.file_uploader('Upload File')
-      sound = AudioSegment.from_mp3(user_input)
-      dst="test.wav"
-      sound.export(dst, format="wav")
-      user_input= get_large_audio_transcription(dst)
+      if uploaded_file is None:
+        st.info("Please upload a MIDI file")
+        st.stop()
+      elif:
+        sound = AudioSegment.from_mp3()
+        sound.export(user_input,format="wav")
+        user_input= get_large_audio_transcription(dst)
     if st.button('Generate Text'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
