@@ -89,7 +89,7 @@ def main():
       uploaded_file = st.file_uploader('Upload File',type='wav')
       if uploaded_file is not None:
         user_input= get_large_audio_transcription(uploaded_file)
-	st.write(user_input)
+        st.write(user_input)
     if st.button('Generate Text'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
