@@ -1,3 +1,4 @@
+%%writefile app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -87,7 +88,7 @@ def main():
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type='wav')
-      elif user_input is not None:
+      if uploaded_file is not None:
         user_input= get_large_audio_transcription(uploaded_file)
     if st.button('Generate Text'):
       input = process(user_input)
