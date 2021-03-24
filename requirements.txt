@@ -8,3 +8,4 @@ keras-vis==0.4.1
 lxml==4.2.6
 pydub==0.25.1
 SpeechRecognition==3.8.1
+ffmpeg==1.4
