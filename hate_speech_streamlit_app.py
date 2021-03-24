@@ -91,9 +91,7 @@ def main():
         st.info("Please upload a MIDI file")
         st.stop()
       elif user_input is not None:
-        sound = AudioSegment.from_mp3(user_input)
-        sinput= sound.export(user_input,format="wav")
-        user_input= get_large_audio_transcription(sinput)
+        user_input= get_large_audio_transcription(user_input)
     if st.button('Generate Text'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
