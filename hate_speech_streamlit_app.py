@@ -42,7 +42,7 @@ def main():
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
       user_input = st.file_uploader('Upload File')
-    if st.button('Generate Text'):
+    if st.button('Generate Result'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
       tokenizer.fit_on_texts(clean.values)
