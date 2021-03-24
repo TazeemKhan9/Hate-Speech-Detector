@@ -1,3 +1,4 @@
+%%writefile app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -87,10 +88,10 @@ def main():
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
       user_input = st.file_uploader('Upload File')
-      if uploaded_file is None:
+      if user_input is None:
         st.info("Please upload a MIDI file")
         st.stop()
-      elif:
+      elif user_input is not None:
         sound = AudioSegment.from_mp3()
         sound.export(user_input,format="wav")
         user_input= get_large_audio_transcription(dst)
