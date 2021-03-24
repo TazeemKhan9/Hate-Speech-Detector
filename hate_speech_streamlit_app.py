@@ -87,7 +87,7 @@ def main():
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
       user_input = st.file_uploader('Upload File')
-      sound = AudioSegment.from_mp3(path)
+      sound = AudioSegment.from_mp3(user_input)
       dst="test.wav"
       sound.export(dst, format="wav")
       user_input= get_large_audio_transcription(dst)
