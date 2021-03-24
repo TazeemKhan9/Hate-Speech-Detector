@@ -6,3 +6,5 @@ tensorflow==2.4.1
 xlrd==1.2.0
 keras-vis==0.4.1
 lxml==4.2.6
+pydub==0.25.1
+SpeechRecognition==3.8.1
