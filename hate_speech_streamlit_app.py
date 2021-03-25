@@ -91,7 +91,7 @@ def main():
         user_input= get_large_audio_transcription(uploaded_file)
         st.subheader("Speech to Text Result")
         st.write(user_input)
-    if st.button('Generate Text'):
+    if st.button('Generate Result'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
       tokenizer.fit_on_texts(clean.values)
