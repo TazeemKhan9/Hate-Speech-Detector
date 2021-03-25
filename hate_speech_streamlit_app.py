@@ -88,7 +88,7 @@ def main():
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type=['wav','mp3'])
       if uploaded_file is not None:
-        sound = AudioSegment.from_mp3(upload_file)
+        sound = AudioSegment.from_mp3(uploaded_file)
         dst="test.wav"
         sound.export(dst, format="wav")
         user_input= get_large_audio_transcription(dst)
