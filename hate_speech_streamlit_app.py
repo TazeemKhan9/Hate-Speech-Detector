@@ -86,7 +86,7 @@ def main():
     elif opt == 'Twitter Link':
       user_input = st.text_input('Enter link')
     elif opt == 'Audio File':
-      uploaded_file = st.file_uploader('Upload File',type='wav')
+      uploaded_file = st.file_uploader('Upload File',type=['wav','mp3'])
       if uploaded_file is not None:
         sound = AudioSegment.from_mp3(upload_file)
         dst="test.wav"
