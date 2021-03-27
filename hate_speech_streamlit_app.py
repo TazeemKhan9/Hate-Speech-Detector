@@ -12,6 +12,7 @@ import json
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import plotly.express as px
+import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 
