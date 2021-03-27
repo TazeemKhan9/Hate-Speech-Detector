@@ -147,14 +147,14 @@ def main():
       fig, ax = plt.subplots()
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
-      plt.show(fig)
+      st.pyplot(fig)
     elif wc== 'Offensive Language':
       offensive_words = ' '.join([text for text in df['tweet'][df2['class'] == 1]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(offensive_words)
       fig, ax= plt.subplots()
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
-      plt.show(fig)
+      st.pyplot(fig)
 
 if __name__ == '__main__':
   main()
