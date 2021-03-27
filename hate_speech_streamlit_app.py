@@ -7,6 +7,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from swachhdata.text import *
 from keras.utils.data_utils import get_file
 import speech_recognition as sr 
+import matplotlib.pyplot as plt
 import os
 import json
 from pydub import AudioSegment
