@@ -141,18 +141,17 @@ def main():
       plt.axis("off")
       plt.show()
     elif wc== 'Hate Speech':
-      hatred_words = ' '.join([text for text in df['processed_tweets'][df2['class'] == 0]])
+      hatred_words = ' '.join([text for text in df['tweet'][df2['class'] == 0]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(hatred_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
       plt.show()
     elif wc== 'Offensive Language':
-      offensive_words = ' '.join([text for text in df['processed_tweets'][df2['class'] == 1]])
+      offensive_words = ' '.join([text for text in df['tweet'][df2['class'] == 1]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(offensive_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
       plt.show()
-    st.pyplot()
 
 if __name__ == '__main__':
   main()
