@@ -78,11 +78,9 @@ def get_large_audio_transcription(path):
             audio_listened = r.record(source)
             # try converting it to text
             try:
-              text = r.recognize_google_cloud(audio_listened,credentials_json=y)
-            except sr.UnknownValueError:
-              print("Google Cloud Speech could not understand audio")
-            except sr.RequestError as e:
-              print("Could not request results from Google Cloud Speech service; {0}".format(e))
+                text = r.recognize_google_cloud(audio_listened,credentials_json=y)
+            except sr.UnknownValueError as e:
+                print("Error:", str(e))
             else:
                 text = f"{text.capitalize()}. "
                 #print(chunk_filename, ":", text)
