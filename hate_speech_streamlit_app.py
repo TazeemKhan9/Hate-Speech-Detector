@@ -11,6 +11,7 @@ import os
 import json
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
+import plotly.express as px
 
 
 model= get_file('best_model2.hdf5','https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Model/best_model2.hdf5?raw=true')
@@ -122,6 +123,9 @@ def main():
     if pos_df =='Original Data':
       st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
     elif pos_df =='Cleaned Data':
-      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))  
+      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
+    st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
+    fig = px.histogram(dataset, x="class",color='class',labels=[0,1,2])
+    st.plotly_chart(fig)  
 if __name__ == '__main__':
 	main()
