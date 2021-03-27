@@ -127,7 +127,7 @@ def main():
     elif pos_df =='Cleaned Data':
       st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
     st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
-    fig = px.histogram(dataset, x="class",color='class',labels=[0,1,2])
+    fig = px.histogram(df, x="class",color='class',labels=[0,1,2])
     st.plotly_chart(fig)
     st.subheader('Modelling')
     st.write('Long Short Term Memory networks – usually just called “LSTMs” – are a special kind of RNN, capable of learning long-term dependencies. They work tremendously well on a large variety of problems, and are now widely used especially in NLP applications. Remembering information for long periods of time is practically their default behavior, not something they struggle to learn!. LSTMs also have this chain like neural network structure, but the repeating module has a different structure from that of RNN. Instead of having a single neural network layer, there are four, interacting in a very special way. This helps in learning the context of statements and dealing with the class imabalance in the dataset. Below you can select wordclouds of the dataset.')
