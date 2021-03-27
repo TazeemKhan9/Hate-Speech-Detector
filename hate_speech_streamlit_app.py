@@ -12,7 +12,6 @@ import json
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import plotly.express as px
-import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 
@@ -124,36 +123,35 @@ def main():
     st.write('The dataset used for this project consists of Tweets labeled as hate_speech, offensive_language, or neither. We have added multiple steps in our preprocessing like removal of stop words, lemitizing, removal of emojis etc. on both our training dataset and the input which we take. Below you can select which dataset you want to see.')
     pos_df= st.selectbox("Select a Dataset",['Original Data','Cleaned Data','None'])
     if pos_df =='Original Data':
-      st.dataframe(pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
+      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
     elif pos_df =='Cleaned Data':
-      st.dataframe(pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
+      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
     st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
-    fig = px.histogram(df2, x="class",color='class',labels=[0,1,2])
+    fig = px.histogram(dataset, x="class",color='class',labels=[0,1,2])
     st.plotly_chart(fig)
     st.subheader('Modelling')
     st.write('Long Short Term Memory networks – usually just called “LSTMs” – are a special kind of RNN, capable of learning long-term dependencies. They work tremendously well on a large variety of problems, and are now widely used especially in NLP applications. Remembering information for long periods of time is practically their default behavior, not something they struggle to learn!. LSTMs also have this chain like neural network structure, but the repeating module has a different structure from that of RNN. Instead of having a single neural network layer, there are four, interacting in a very special way. This helps in learning the context of statements and dealing with the class imabalance in the dataset. Below you can select wordclouds of the dataset.')
-    wc= st.selectbox("Select an option",['All','Hate Speech','Offensive Language'])
+    wc= st.selectbox(("Select an option",['All','Hate Speech','Offensive Language']))
     x = st.select_slider(label='Number of words',options=[25,50,100,150])
     if wc == "All":
-      all_words =' '.join([text for text in df['tweet'].astype('str')])
+      all_words = ' '.join([text for text in df['processed_tweets']])
       wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110,max_words=x).generate(all_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
       plt.show()
     elif wc== 'Hate Speech':
-      hatred_words = ' '.join([text for text in df['tweet'][df2['class'] == 0]])
+      hatred_words = ' '.join([text for text in df['processed_tweets'][df2['class'] == 0]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(hatred_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
       plt.show()
-      st.pyplot()
     elif wc== 'Offensive Language':
-      offensive_words = ' '.join([text for text in df['tweet'][df2['class'] == 1]])
+      offensive_words = ' '.join([text for text in df['processed_tweets'][df2['class'] == 1]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(offensive_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
       plt.show()
-      st.pyplot()
+    st.pyplot()
 
 if __name__ == '__main__':
   main()
