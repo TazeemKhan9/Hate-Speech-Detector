@@ -134,7 +134,7 @@ def main():
     wc= st.selectbox("Select an option",['All','Hate Speech','Offensive Language'])
     x = st.select_slider(label='Number of words',options=[25,50,100,150])
     if wc == "All":
-      all_words = ' '.join([text for text in df['processed_tweets']])
+      all_words = ' '.join([text for text in df['tweet'].astype(str)])
       wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110,max_words=x).generate(all_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
