@@ -125,7 +125,7 @@ def main():
       st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
     elif pos_df =='Cleaned Data':
       st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
-    st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
+    st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below. We could have dropped some data to balance it but we did not want to lose any information so we chose to change our approach in modelling. ')
     fig = px.histogram(dataset, x="class",color='class',labels=[0,1,2])
     st.plotly_chart(fig)  
 if __name__ == '__main__':
