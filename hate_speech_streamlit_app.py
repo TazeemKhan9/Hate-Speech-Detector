@@ -19,6 +19,7 @@ model = load_model(model)
 tokenizer =Tokenizer()
 r = sr.Recognizer()
 df=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true")
+dataset=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true")
 sentiment = ['Hate Speech','Offensive Language','No Issues']
 data={
   "type": "service_account",
