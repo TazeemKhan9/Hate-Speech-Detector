@@ -137,9 +137,10 @@ def main():
     if wc == "All":
       all_words = ' '.join([text for text in df['tweet'].astype(str)])
       wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110,max_words=x).generate(all_words)
+      fig, ax = plt.subplots()
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
-      st.pyplot(plt.show())
+      st.pyplot(fig)
     elif wc== 'Hate Speech':
       hatred_words = ' '.join([text for text in df['tweet'][df2['class'] == 0]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(hatred_words)
