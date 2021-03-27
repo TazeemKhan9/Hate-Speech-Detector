@@ -139,7 +139,7 @@ def main():
       wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110,max_words=x).generate(all_words)
       plt.imshow(wordcloud, interpolation='bilinear')
       plt.axis("off")
-      plt.show()
+      st.pyplot(plt.show())
     elif wc== 'Hate Speech':
       hatred_words = ' '.join([text for text in df['tweet'][df2['class'] == 0]])
       wordcloud = WordCloud(width=800, height=500,max_font_size=110,max_words=x).generate(hatred_words)
