@@ -33,7 +33,7 @@ data={
 }
 y=json.dumps(data)
 
-PAGE_CONFIG = {"page_title":"Hate Speech Detector","page_icon":":smiley:","layout":"centered"}
+PAGE_CONFIG = {"page_title":"Hate Speech Detector","page_icon":":H:","layout":"centered"}
 st.set_page_config(**PAGE_CONFIG)
 
 def process(tweet):
@@ -89,7 +89,7 @@ def get_large_audio_transcription(path):
     return whole_text
 
 def main():
-  menu = ["Tool"]
+  menu = ["Tool","More"]
   tokenizer =Tokenizer()
   choice = st.sidebar.selectbox('Menu',menu)
   if choice == 'Tool':
@@ -114,6 +114,14 @@ def main():
       test = pad_sequences(input, maxlen=30)
       generated_text = sentiment[np.around(model.predict(test), decimals=0).argmax(axis=1)[0]]
       st.write(generated_text)
-
+  elif choice == "More":
+    st.header('About the project')
+		st.subheader('Data')
+		st.write('The dataset used for this project consists of Tweets labeled as hate_speech, offensive_language, or neither. We have added multiple steps in our preprocessing like removal of stop words, lemitizing, removal of emojis etc. on both our training dataset and the input which we take. Below you can select which dataset you want to see.')
+    pos_df= st.selectbox("Select a Dataset",['Original Data','Cleaned Data','None'])
+    if pos_df =='Original Data':
+      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
+    elif pos_df =='Cleaned Data':
+      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))  
 if __name__ == '__main__':
 	main()
