@@ -117,11 +117,14 @@ def main():
       user_input = st.text_input('Enter text')
     elif opt == 'Twitter Link':
       x= st.text_input('Enter link')
-      id=x.rsplit('/', 1)[1]
-      status = api.get_status(id,tweet_mode="extended")
-      user_input=status.full_text
-      st.subheader("Text of the tweet")
-      st.write(user_input)
+      if x is not None:
+        id=x.rsplit('/', 1)[1]
+        status = api.get_status(id,tweet_mode="extended")
+        user_input=status.full_text
+        st.subheader("Text of the tweet")
+        st.write(user_input)
+      elif x is none:
+        st.error('Please enter a valid input')
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type='wav')
       if uploaded_file is not None:
