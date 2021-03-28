@@ -131,7 +131,7 @@ def main():
         user_input= get_large_audio_transcription(uploaded_file)
         st.subheader("Speech to Text Result")
         st.write(user_input)
-    if st.button('Generate Text'):
+    if st.button('Generate Result'):
       input = process(user_input)
       clean=df['tweet'].astype('str')
       tokenizer.fit_on_texts(clean.values)
@@ -145,9 +145,9 @@ def main():
     st.write('The dataset used for this project consists of Tweets labeled as hate_speech, offensive_language, or neither. We have added multiple steps in our preprocessing like removal of stop words, lemitizing, removal of emojis etc. on both our training dataset and the input which we take. Below you can select which dataset you want to see.')
     pos_df= st.selectbox("Select a Dataset",['None','Original Data','Cleaned Data'])
     if pos_df =='Original Data':
-      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true"))
+      st.dataframe(df2)
     elif pos_df =='Cleaned Data':
-      st.dataframe(data=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true"))
+      st.dataframe(df)
     st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
     fig = px.histogram(df2, x="class",color='class',labels=['Hate Speech','Offensive Language','No issues'])
     st.plotly_chart(fig,use_container_width=True)
