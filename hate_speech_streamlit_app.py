@@ -14,15 +14,25 @@ from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import plotly.express as px
 from wordcloud import WordCloud
-
+import tweepy as tw
 
 model= get_file('best_model2.hdf5','https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Model/best_model2.hdf5?raw=true')
 model = load_model(model)
 tokenizer =Tokenizer()
 r = sr.Recognizer()
+
 df=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true")
 df2=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true")
 sentiment = ['Hate Speech','Offensive Language','No Issues']
+
+Access_Token='2276034169-WiASclcqTMhnaZeskrA1CYSULuGS3X3nZQztHQo'
+Access_token_secret= 'aCvI9D3H9J22YI5AvbiUNWlusLiqMiqSP7kRs2u181MiM'
+API_Key='YEHbdylfRU9f7m7IIwGrMl597'
+API_key_secret ='rbNIqQ0vwMWdaGVK8qXzld0I4zXPK5Kama5FiYQKrkfAoAS3q0'
+auth = tw.OAuthHandler(API_Key, API_key_secret)
+auth.set_access_token(Access_Token, Access_token_secret)
+api = tw.API(auth, wait_on_rate_limit=True)
+
 data={
   "type": "service_account",
   "project_id": "acoustic-arch-308907",
@@ -36,6 +46,9 @@ data={
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/speech-to-text%40acoustic-arch-308907.iam.gserviceaccount.com"
 }
 y=json.dumps(data)
+
+
+
 
 PAGE_CONFIG = {"page_title":"Hate Speech Detector","page_icon":":H:","layout":"centered"}
 st.set_page_config(**PAGE_CONFIG)
@@ -103,7 +116,12 @@ def main():
     if opt == 'Text':
       user_input = st.text_input('Enter text')
     elif opt == 'Twitter Link':
-      user_input = st.text_input('Enter link')
+      x= st.text_input('Enter link')
+      id=x.rsplit('/', 1)[1]
+      status = api.get_status(id)
+      user_input=status.text
+      st.subheder("Text of the tweet")
+      st.write(user_input)
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type='wav')
       if uploaded_file is not None:
