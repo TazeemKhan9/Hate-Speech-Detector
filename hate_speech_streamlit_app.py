@@ -23,6 +23,9 @@ r = sr.Recognizer()
 
 df=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true")
 df2=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true")
+df3=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/cleaned_tweet.csv?raw=true",nrows=100)
+df4=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/Data/HateSpeechData.csv?raw=true",nrows=100)
+
 sentiment = ['Hate Speech','Offensive Language','No Issues']
 
 Access_Token='2276034169-WiASclcqTMhnaZeskrA1CYSULuGS3X3nZQztHQo'
@@ -145,9 +148,9 @@ def main():
     st.write('The dataset used for this project consists of Tweets labeled as hate_speech, offensive_language, or neither. We have added multiple steps in our preprocessing like removal of stop words, lemitizing, removal of emojis etc. on both our training dataset and the input which we take. Below you can select which dataset you want to see.')
     pos_df= st.selectbox("Select a Dataset",['None','Original Data','Cleaned Data'])
     if pos_df =='Original Data':
-      st.dataframe(df2)
+      st.dataframe(df4)
     elif pos_df =='Cleaned Data':
-      st.dataframe(df)
+      st.dataframe(df3)
     st.write('One of the major issues faced by us in the dataset was the class imbalance. The class imbalance can bee seen in the histogram below')
     fig = px.histogram(df2, x="class",color='class',labels=['Hate Speech','Offensive Language','No issues'])
     st.plotly_chart(fig,use_container_width=True)
