@@ -120,7 +120,7 @@ def main():
       id=x.rsplit('/', 1)[1]
       status = api.get_status(id)
       user_input=status.text
-      st.subheder("Text of the tweet")
+      st.subheader("Text of the tweet")
       st.write(user_input)
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type='wav')
