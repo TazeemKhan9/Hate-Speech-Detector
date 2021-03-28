@@ -119,7 +119,7 @@ def main():
       x= st.text_input('Enter link')
       id=x.rsplit('/', 1)[1]
       status = api.get_status(id)
-      user_input=status.text
+      user_input=status.full_text
       st.subheader("Text of the tweet")
       st.write(user_input)
     elif opt == 'Audio File':
