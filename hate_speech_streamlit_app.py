@@ -123,7 +123,7 @@ def main():
         user_input=status.full_text
         st.subheader("Text of the tweet")
         st.write(user_input)
-      elif x is none:
+      elif x is None:
         st.error('Please enter a valid input')
     elif opt == 'Audio File':
       uploaded_file = st.file_uploader('Upload File',type='wav')
