@@ -119,8 +119,9 @@ def main():
     if opt == 'Text':
       user_input = st.text_input('Enter text')
     elif opt == 'Twitter Link':
-      x= st.text_input('Enter link')
+     
       try:
+         x= st.text_input('Enter link')
         id=x.rsplit('/', 1)[1]
         status = api.get_status(id,tweet_mode="extended")
         user_input=status.full_text
