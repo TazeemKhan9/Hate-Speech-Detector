@@ -57,18 +57,18 @@ PAGE_CONFIG = {"page_title":"Hate Speech Detector","page_icon":":H:","layout":"c
 st.set_page_config(**PAGE_CONFIG)
 
 def process(tweet):
-    return TextRecast(tweet, urlRecast = {'process': 'remove'},
-                      htmlRecast = True,
-                      EscapeSequenceRecast = True,
-                      MentionRecast = {'process': 'extract_remove'},
-                      ContractionsRecast = True,
-                      CaseRecast = {'process': 'lower'},
-                      EmojiRecast = {'process': 'remove', 'space_out': False},
-                      HashtagRecast = {'process': 'remove'},
-                      StopWordsRecast = {'package': 'nltk', 'stopwords': None},
-                      NumberRecast = {'process': 'remove', 'seperator': None},
-                      PunctuationRecast = True,
-                      LemmatizationRecast = {'package':'nltk'})
+    return TextRecast(tweet, urlRecast = {'process': 'remove'}, #removes urls
+                      htmlRecast = True, #removes html tags from text
+                      EscapeSequenceRecast = True, #removes escape sequences
+                      MentionRecast = {'process': 'extract_remove'}, #Removing or extracting Mentions
+                      ContractionsRecast = True, # Recast text data by expanding Contractions
+                      CaseRecast = {'process': 'lower'}, #converting all text to lower
+                      EmojiRecast = {'process': 'remove', 'space_out': False},#Removing emojis from text
+                      HashtagRecast = {'process': 'remove'},#removing or extracting Hashtag
+                      StopWordsRecast = {'package': 'nltk', 'stopwords': None},# removing stop words.
+                      NumberRecast = {'process': 'remove', 'seperator': None},# removing numbers
+                      PunctuationRecast = True, #removing punctuations
+                      LemmatizationRecast = {'package':'nltk'})#lemmatizing texts
 
 def get_large_audio_transcription(path):
     # open the audio file using pydub
