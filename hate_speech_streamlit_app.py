@@ -34,7 +34,7 @@ sentiment = ['Hate Speech','Offensive Language','No Issues']
 #API_key_secret ='rbNIqQ0vwMWdaGVK8qXzld0I4zXPK5Kama5FiYQKrkfAoAS3q0'
 auth = tw.OAuthHandler(st.secrets["API_Key"],st.secrets["API_key_secret"])
 auth.set_access_token(st.secrets["Access_Token"],st.secrets["Access_token_secret"])
-api = tw.API(st.secrets["auth"], wait_on_rate_limit=True)
+api = tw.API(auth, wait_on_rate_limit=True)
 
 data={
   "type": "service_account",
