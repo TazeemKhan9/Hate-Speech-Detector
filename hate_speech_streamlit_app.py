@@ -28,13 +28,13 @@ df4=pd.read_csv("https://github.com/TazeemKhan9/Hate-Speech-Detector/blob/main/D
 
 sentiment = ['Hate Speech','Offensive Language','No Issues']
 
-Access_Token='2276034169-WiASclcqTMhnaZeskrA1CYSULuGS3X3nZQztHQo'
-Access_token_secret= 'aCvI9D3H9J22YI5AvbiUNWlusLiqMiqSP7kRs2u181MiM'
-API_Key='YEHbdylfRU9f7m7IIwGrMl597'
-API_key_secret ='rbNIqQ0vwMWdaGVK8qXzld0I4zXPK5Kama5FiYQKrkfAoAS3q0'
-auth = tw.OAuthHandler(API_Key, API_key_secret)
-auth.set_access_token(Access_Token, Access_token_secret)
-api = tw.API(auth, wait_on_rate_limit=True)
+#Access_Token='2276034169-WiASclcqTMhnaZeskrA1CYSULuGS3X3nZQztHQo'
+#Access_token_secret= 'aCvI9D3H9J22YI5AvbiUNWlusLiqMiqSP7kRs2u181MiM'
+#API_Key='YEHbdylfRU9f7m7IIwGrMl597'
+#API_key_secret ='rbNIqQ0vwMWdaGVK8qXzld0I4zXPK5Kama5FiYQKrkfAoAS3q0'
+auth = tw.OAuthHandler(st.secrets["API_Key"],st.secrets["API_key_secret"])
+auth.set_access_token(st.secrets["Access_Token"],st.secrets["Access_token_secret"])
+api = tw.API(st.secrets["auth"], wait_on_rate_limit=True)
 
 data={
   "type": "service_account",
