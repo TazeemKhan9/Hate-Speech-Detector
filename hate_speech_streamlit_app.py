@@ -5,7 +5,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from swachhdata.text import *
-from tensorflow.keras.utils.data_utils import get_file
+#from tensorflow.keras.utils.data_utils import get_file
+from tensorflow.keras.utils import get_file
 import speech_recognition as sr 
 import matplotlib.pyplot as plt
 import os
